@@ -369,3 +369,21 @@ The agent must implement the DMRG algorithm from scratch (no tensor network libr
 ```bash
 tail -f green_agent.log white_agent.log launcher.log
 ```
+
+---
+
+## Citation
+
+If you use PRBench in your research, please cite:
+
+```bibtex
+@misc{qiu2026prbenchendtoendpaperreproduction,
+      title={PRBench: End-to-end Paper Reproduction in Physics Research}, 
+      author={Shi Qiu and Junyi Deng and Yiwei Deng and Haoran Dong and Jieyu Fu and Mao Li and Zeyu Li and Zhaolong Zhang and Huiwen Zheng and Leidong Bao and Anqi Lv and Zihan Mo and Yadi Niu and Yiyang Peng and Yu Tian and Yili Wang and Ziyu Wang and Zi-Yu Wang and Jiashen Wei and Liuheng Wu and Aoran Xue and Leyi Yang and Guanglu Yuan and Xiarui Zhan and Jingjun Zhang and Zifan Zheng and Pengfei Liu and Linrui Zhen and Kaiyang Li and Qichang Li and Ziheng Zhou and Guo-En Nian and Yunwei Xiao and Qing-Hong Cao and Linjie Dai and Xu Feng and Peng Gao and Ying Gu and Chang Liu and Jia Liu and Ming-xing Luo and Yan-Qing Ma and Liang-You Peng and Huichao Song and Shufeng Wang and Chenxu Wang and Tao Wang and Yi-Nan Wang and Chengyin Wu and Pengwei Zhao and Hua Xing Zhu},
+      year={2026},
+      eprint={2603.27646},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2603.27646}, 
+}
+```
