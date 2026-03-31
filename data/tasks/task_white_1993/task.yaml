@@ -1,0 +1,143 @@
+# PRBench Task Configuration
+
+task_id: task_white_1993
+
+# --- Paper Info ---
+paper:
+  title: "Density-matrix algorithms for quantum renormalization groups"
+  author: "Steven R. White"
+  doi: "10.1103/PhysRevB.48.10345"
+  year: 1993
+  paper_file: "white1993.md"
+
+# --- Files ---
+instruction_file: "instruction.md"
+metadata_file: "metadata.md"
+ground_truth_data_dir: "data"
+ground_truth_code_dir: "reproduce"
+
+# --- Expected Outputs ---
+expected_outputs:
+  analysis:
+    - "reproduction/ANALYSIS.md"
+  code:
+    - "reproduction/operators.py"
+    - "reproduction/block.py"
+    - "reproduction/superblock.py"
+    - "reproduction/dmrg_infinite.py"
+    - "reproduction/dmrg_finite.py"
+    - "reproduction/fig2_compute.py"
+    - "reproduction/fig3_compute.py"
+    - "reproduction/fig4_compute.py"
+    - "reproduction/fig5_compute.py"
+    - "reproduction/fig6_compute.py"
+    - "reproduction/fig7_compute.py"
+    - "reproduction/fig8_compute.py"
+  data:
+    - "data/fig2.csv"
+    - "data/fig3.csv"
+    - "data/fig4.csv"
+    - "data/fig5.csv"
+    - "data/fig6.csv"
+    - "data/fig7.csv"
+    - "data/fig8.csv"
+
+# --- Docker Environment ---
+docker:
+  image: "python:3.11-slim"
+  memory_limit: "8g"
+  timeout: 14400                        # 4 hours max
+  pip_install:
+    - numpy
+    - scipy
+    - matplotlib
+
+# --- Grading Rubric ---
+grading:
+  dimensions:
+    - name: "methodology_understanding"
+      weight: 0.20
+      description: >
+        Does the agent's ANALYSIS.md correctly describe the DMRG methodology,
+        infinite/finite system algorithms, density matrix construction, truncation,
+        and measurement procedures? Compare against metadata.md.
+    - name: "code_correctness"
+      weight: 0.15
+      description: >
+        Are all required code files present? Does the code implement DMRG correctly:
+        spin operators, block growth, superblock diagonalization, density matrix
+        truncation, finite sweeps, and measurements?
+    - name: "data_accuracy"
+      weight: 0.50
+      description: >
+        How well do the generated CSV data files match the ground truth reference data?
+        DMRG is deterministic so results should match closely (~5% tolerance).
+        Check column names, row counts, and value ranges.
+    - name: "completeness"
+      weight: 0.15
+      description: >
+        Are all 7 CSV files, all 12 code files, and the ANALYSIS.md present?
+        Are the files non-trivial (not empty/placeholder)?
+
+# --- Code-Only Evaluation Mode ---
+code_only:
+  instruction_suffix: |
+    ## IMPORTANT: Code-Only Mode
+
+    In this task you are in **code-only mode**. You must:
+    1. Read and analyze the paper
+    2. Write `reproduction/ANALYSIS.md` with your methodology analysis
+    3. Implement ALL code files under `reproduction/`
+    4. **DO NOT** run the DMRG simulations or generate CSV data files
+    5. Focus on writing correct, complete, and well-structured code
+
+    Your deliverables are ONLY the analysis document and code files.
+    Do NOT produce any CSV data files.
+
+  expected_outputs:
+    analysis:
+      - "reproduction/ANALYSIS.md"
+    code:
+      - "reproduction/operators.py"
+      - "reproduction/block.py"
+      - "reproduction/superblock.py"
+      - "reproduction/dmrg_infinite.py"
+      - "reproduction/dmrg_finite.py"
+      - "reproduction/fig2_compute.py"
+      - "reproduction/fig3_compute.py"
+      - "reproduction/fig4_compute.py"
+      - "reproduction/fig5_compute.py"
+      - "reproduction/fig6_compute.py"
+      - "reproduction/fig7_compute.py"
+      - "reproduction/fig8_compute.py"
+
+  grading:
+    dimensions:
+      - name: "methodology_understanding"
+        weight: 0.25
+        description: >
+          Does ANALYSIS.md correctly describe the DMRG methodology,
+          infinite/finite system algorithms, density matrix construction,
+          truncation, and measurement procedures?
+      - name: "code_correctness"
+        weight: 0.50
+        description: >
+          Read every code file carefully. Check whether the implementation is
+          physically and algorithmically correct:
+          - Spin operators for S=1/2 and S=1
+          - Block growth and superblock construction
+          - Density matrix computation and truncation
+          - Finite system sweeps (Table III algorithm)
+          - Measurements: energy, gap, bond strength, local Sz
+          - Multi-target state density matrix
+          Compare against ground truth formulas in metadata. Flag any bugs
+          that would produce incorrect results.
+      - name: "code_quality"
+        weight: 0.10
+        description: >
+          Is the code well-structured, readable, and does it follow the
+          expected file organization?
+      - name: "completeness"
+        weight: 0.15
+        description: >
+          Are all 12 code files and the ANALYSIS.md present and non-trivial?

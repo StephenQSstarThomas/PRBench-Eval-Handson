@@ -1,0 +1,46 @@
+task_id: bbbtest_alphabet
+
+paper:
+  title: "Alphabet Test"
+  author: "Test"
+  doi: "N/A"
+  year: 2024
+  paper_file: "paper.md"
+
+instruction_file: "instruction.md"
+metadata_file: "metadata.md"
+ground_truth_data_dir: "data"
+
+expected_outputs:
+  code:
+    - "reproduction/alphabet.py"
+  data:
+    - "data/letters.csv"
+
+docker:
+  image: "python:3.11-slim"
+  memory_limit: "1g"
+  timeout: 300
+  pip_install: []
+
+grading:
+  dimensions:
+    - name: "correctness"
+      weight: 1.0
+      description: >
+        Does the script print 'abc' and produce data/letters.csv
+        with rows for a, b, c with positions 1, 2, 3?
+
+code_only:
+  instruction_suffix: |
+    ## Code-Only Mode
+    Write the code only. Do NOT run it.
+  expected_outputs:
+    code:
+      - "reproduction/alphabet.py"
+  grading:
+    dimensions:
+      - name: "correctness"
+        weight: 1.0
+        description: >
+          Does the code correctly print abc and write the CSV?

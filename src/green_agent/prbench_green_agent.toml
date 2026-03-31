@@ -1,0 +1,30 @@
+name = "prbench_green_agent"
+description = "The assessment hosting agent for PRBench paper reproduction evaluation."
+version = "0.1.0"
+
+defaultInputModes = ["text"]
+defaultOutputModes = ["text"]
+[capabilities]
+streaming = false
+
+[[skills]]
+id = "host_assess_prbench"
+name = "PRBench paper reproduction assessment"
+description = """
+Assess an AI agent's ability to reproduce scientific paper results.
+Manages Docker environment, sends instructions, evaluates generated data against ground truth.
+"""
+tags = ["green agent", "assessment hosting", "prbench", "paper reproduction"]
+examples = ["""
+Your task is to evaluate the paper reproduction agent located at:
+<white_agent_url>
+http://localhost:9002/
+</white_agent_url>
+You should use the following task configuration:
+<task_config>
+{
+  "task_id": "task_creutz_1980",
+  "data_dir": "/path/to/data/tasks/task_creutz_1980"
+}
+</task_config>
+"""]

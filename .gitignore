@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Task workspaces (generated at runtime)
+data/tasks/*/workspace/
+
+
+# Nested git repos in workspaces (ignore .git dirs anywhere under results)
+results/**/.git/
+
+# Large workspace_full directories in results (only keep eval_report.json)
+results/**/workspace_full/
+
+# Logs
+*.log
+
+# Environment
+.env
